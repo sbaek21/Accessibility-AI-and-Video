@@ -9,6 +9,3 @@ output/
 # Ignore specific files
 scratch.txt
 
-# Ignore all .env files except `.env.example`
-.env
-!.env.example
