@@ -1,3 +1,10 @@
+# Ignore folders
 data/
+output/
+
+# Ignore specific file types
+*.log
+*.tmp
+
+# Ignore specific files
 scratch.txt
-out_directory*
