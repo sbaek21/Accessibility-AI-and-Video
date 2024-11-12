@@ -1,6 +1,6 @@
 # Ignore folders
-data/
-output/
+data/**
+output/** 
 
 # Ignore specific file types
 *.log
@@ -8,3 +8,4 @@ output/
 
 # Ignore specific files
 scratch.txt
+temp.ipynb
