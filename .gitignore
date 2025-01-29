@@ -1,0 +1,15 @@
+# Ignore folders
+data/
+output/
+
+# Ignore specific file types
+*.log
+*.tmp
+
+# Ignore specific files
+scratch.txt
+
+out_directory0
+out_directory1
+Masking_Image
+masking_out_directory
