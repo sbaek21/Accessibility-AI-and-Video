@@ -1,6 +1,7 @@
 # Ignore folders
 data/**
 output/** 
+.venv/** 
 
 # Ignore specific file types
 *.log
