@@ -1,6 +1,6 @@
 # Ignore folders
 data/
-output/
+
 
 # Ignore specific file types
 *.log
@@ -8,4 +8,7 @@ output/
 
 # Ignore specific files
 scratch.txt
+method1_background_image.png
+method1_bm.png
+method1_foreground_image.png
 
