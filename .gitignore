@@ -1,6 +1,12 @@
 # Ignore folders
 data/
+out_directory0/
+out_directory1/
 output/
+output0/
+output1/
+subtraction_output/
+
 
 # Ignore specific file types
 *.log
@@ -8,4 +14,7 @@ output/
 
 # Ignore specific files
 scratch.txt
+method1_background_image.png
+method1_bm.png
+method1_foreground_image.png
 
