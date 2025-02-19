@@ -43,14 +43,16 @@ def bgremove1(myimage):
 
 
 
-    cv2.imwrite("output0/method1_" + str(myimage) + ".png",finalimage)
- 
+    output_path = os.path.join("output1", "method1_" + os.path.basename(file_path))
+    cv2.imwrite(output_path, finalimage)
+     
     return finalimage
 
 
 
-# file_name = 'out_directory1/scene_540.jpg'
-# directory_name = os.fsencode('out_directory0')
+
+# loop through all the images in the directory (AFTER APPLYING CNN METHOD)
+
 directory = 'out_directory0'
 files = sorted(os.listdir(directory), key=extract_number)
 for file in files:
@@ -59,14 +61,6 @@ for file in files:
     if os.path.isfile(file_path):  # Ensure it's a file
         print(file_path)
         new_img = bgremove1(file_path)
-
-# loop through all images in the directory
-    
-
-# src = cv2.imread(file_name)
-
-# # cv2.imshow("image", new_img)
-# cv2.waitKey()
 
 
 ## some results
