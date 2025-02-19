@@ -42,14 +42,14 @@ def compute_difference(img1, img2, index):
     img2_array = np.array(img2)
     ssim_value = ssim(img1_array, img2_array, channel_axis=2)
 
-    threshold = 0.70
-    
+    threshold = 0.75
+    print(ssim_value)
     # False for there is no difference
     if ssim_value > threshold:
         return False
     else:
-        print("index: " + str(index))
-        print(ssim_value)
+        print("Difference found at: " + str(index))
+        print("SSIM VALUE: " + str(ssim_value))
 
     return True
 
@@ -59,7 +59,6 @@ def compute_difference(img1, img2, index):
 
 directory = 'output'
 files = sorted(os.listdir(directory), key=extract_number)
-files = sorted(os.listdir(directory), reverse=True)
 different_image_indexes = []
 count = 0
 for file in files:
@@ -72,6 +71,7 @@ for file in files:
     file_path = os.path.join(directory, file)
     next_file = os.path.join(directory, files[count + 1])
     if os.path.isfile(file_path) and os.path.isfile(next_file):  # Ensure it's a file
+        print(count)
         if compute_difference(file_path, next_file, count):
             different_image_indexes.append(count + 1)
 

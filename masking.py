@@ -56,10 +56,11 @@ def bgremove1(myimage):
 
 # loop through all the images in the directory (AFTER APPLYING CNN METHOD)
 
-directory = 'out_directory0' # directory where the images currently stored (Change as needed)
-files = sorted(os.listdir(directory), key=extract_number)
-for file in files:
-    file_path = os.path.join(directory, file)
+directory = os.fsencode('out_directory0') # directory where the images currently stored (Change as needed)
+
+for file in os.listdir(directory):
+    file_path = os.fsdecode(file)
+    file_path = os.path.join('out_directory0', file_path)
 
     if os.path.isfile(file_path):  
         print(file_path)
