@@ -3,9 +3,12 @@ import numpy as np
 import os
 import re
 
+# Make sure all directories exist before running 
+# Line 49: output directory for the masked images
+# Line 59: directory where the images (after CNN method) are stored
 def extract_number(filename):
-    match = re.search(r'\d+', filename)  # Find first number in the filename
-    return int(match.group()) if match else float('inf')  # Convert to int for sorting
+    match = re.search(r'\d+', filename)  
+    return int(match.group()) if match else float('inf')  
 
 
 def bgremove1(myimage):
@@ -42,10 +45,10 @@ def bgremove1(myimage):
     finalimage = background+foreground
 
 
-
-    output_path = os.path.join("output1", "method1_" + os.path.basename(file_path))
+    # directory where output is being stored (Change as needed)
+    output_path = os.path.join("output", "masked_" + os.path.basename(file_path))
     cv2.imwrite(output_path, finalimage)
-     
+
     return finalimage
 
 
@@ -53,12 +56,12 @@ def bgremove1(myimage):
 
 # loop through all the images in the directory (AFTER APPLYING CNN METHOD)
 
-directory = 'out_directory0'
+directory = 'out_directory0' # directory where the images currently stored (Change as needed)
 files = sorted(os.listdir(directory), key=extract_number)
 for file in files:
     file_path = os.path.join(directory, file)
 
-    if os.path.isfile(file_path):  # Ensure it's a file
+    if os.path.isfile(file_path):  
         print(file_path)
         new_img = bgremove1(file_path)
 
