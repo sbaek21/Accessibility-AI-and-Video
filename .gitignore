@@ -8,18 +8,5 @@ output/
 
 # Ignore specific files
 scratch.txt
-
-out_directory0
-out_directory1
-Masking_Image
-masking_out_directory
-masking_out_directory1
-masking_out_directory2
-pixelsubtract_directory2
-scrolling_directory
-scrolling_directory2
-scrolling_directory3
-scrolling_directory4
-scrolling_directory5
-scrolling_directory6
-scrolling_directory7
+out_directory10
+method1_foreground_image.png
