@@ -6,7 +6,8 @@ output/
 output0/
 output1/
 subtraction_output/
-
+videos/
+output_directory/
 
 # Ignore specific file types
 *.log

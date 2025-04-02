@@ -1,3 +1,4 @@
+
 import cv2
 import numpy as np
 import os
@@ -33,7 +34,7 @@ def require_face_result(curr_frame):
             has_person = True
     return has_person, boxes
 
-def extract_non_scrolling_and_no_face_scenes(video_path, output_dir, scrolling_threshold=2.0):
+def extract_non_scrolling_and_no_face_scenes(video_path, output_dir, scrolling_threshold=1.0):
     if not os.path.exists(video_path):
         print(f"{video_path}: File not found.")
         return []
@@ -82,9 +83,10 @@ def extract_non_scrolling_and_no_face_scenes(video_path, output_dir, scrolling_t
         if p1 is not None:
             good_new = p1[st == 1]
             good_old = p0[st == 1]
-            displacements = good_new - good_old
-            avg_disp = np.mean(np.linalg.norm(displacements, axis=1))
-            if avg_disp > scrolling_threshold:
+            # Calculate vertical (y-axis) displacements only.
+            vertical_displacements = np.abs(good_new[:, 1] - good_old[:, 1])
+            avg_disp_y = np.mean(vertical_displacements)
+            if avg_disp_y > scrolling_threshold:
                 scrolling = True
 
         # Run face detection on the current frame.
@@ -93,8 +95,8 @@ def extract_non_scrolling_and_no_face_scenes(video_path, output_dir, scrolling_t
         # Only extract the frame if:
         # - It is not part of a scrolling period,
         # - No face (or upper-body) is detected,
-        # - And it is at approximately one frame per second.
-        if (not scrolling) and (not has_person) and (frame_count % int(fps) == 0):
+        # - And it's sampled at approximately 3 frames per second.
+        if (not scrolling) and (not has_person) and (frame_count % int(fps / 3) == 0):
             img_file = os.path.join(output_dir, f"scene_{scene_index}.jpg")
             cv2.imwrite(img_file, frame)
             scenes.append({
@@ -112,7 +114,7 @@ def extract_non_scrolling_and_no_face_scenes(video_path, output_dir, scrolling_t
     return scenes
 
 # Example usage:
-video_path = "data/videos/test3_87s.mp4"
-output_dir = "out_directory_no_face2"
-scenes = extract_non_scrolling_and_no_face_scenes(video_path, output_dir, scrolling_threshold=2.0)
+video_path = "croppedvideo.mp4"
+output_dir = "out_directory_no_face5"
+scenes = extract_non_scrolling_and_no_face_scenes(video_path, output_dir, scrolling_threshold=1.0)
 print(f"Extracted and saved {len(scenes)} scenes.")

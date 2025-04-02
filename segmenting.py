@@ -62,7 +62,7 @@ def extract_and_save_scenes(video_path, output_dir):
     return scenes
 
 # Example Usage:
-video_path = "test6_cs241_thread.mp4"
-output_dir = "out_directory6"
+video_path = "croppedvideo.mp4"
+output_dir = "out_directory_crop_comb"
 scenes = extract_and_save_scenes(video_path, output_dir)
 print(f"Extracted and saved {len(scenes)} scenes.")
