@@ -579,6 +579,8 @@ for idx in range(len(vertical_motion_magnitudes)):
     print(f"  Std Dev = {vertical_motion_std_devs[idx]:.4f}")
     print(f"  Region-wise Std Dev = {regionwise_std_devs[idx]:.4f}")
 
+    #.
+
 
 
 
