@@ -8,6 +8,7 @@
 .subtraction_output/
 .videos/
 .output_directory/
+.out_directory_crop_comb/
 
 # Ignore specific file types
 *.log
