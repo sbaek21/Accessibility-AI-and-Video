@@ -1,17 +1,18 @@
 # Ignore folders
-data/
-out_directory0/
-out_directory1/
-output/
-output0/
-output1/
-subtraction_output/
-videos/
-output_directory/
+.data/
+.out_directory0/
+.out_directory1/
+.output/
+.output0/
+.output1/
+.subtraction_output/
+.videos/
+.output_directory/
 
 # Ignore specific file types
 *.log
 *.tmp
+*.mp4
 
 # Ignore specific files
 scratch.txt
