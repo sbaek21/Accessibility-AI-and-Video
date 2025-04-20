@@ -1,5 +1,8 @@
 # Ignore folders
+.conda/
+.venv/
 data/
+my-env/
 out_directory0/
 out_directory1/
 output/
