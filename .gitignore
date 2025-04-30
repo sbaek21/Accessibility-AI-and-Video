@@ -20,6 +20,7 @@ scratch.txt
 method1_background_image.png
 method1_bm.png
 method1_foreground_image.png
+.DS_Store
 
 myenv/
 out_directory_no_face
