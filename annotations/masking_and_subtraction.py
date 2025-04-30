@@ -80,9 +80,9 @@ def subtract_two_masks(curr_frame, next_frame, null_color):
 def print_time():
     return strftime("%H:%M:%S", localtime())
 
-video_path = 'data/videos/test3_cs361_2_2_2021.mp4'
-mask_dir = 'output/image/CS_361'
-output_csv = 'output/txt/annotations.csv'
+video_path = ''
+mask_dir = ''
+output_csv = ''
 
 sampling_frequency = 1
 
