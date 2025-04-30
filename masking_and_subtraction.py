@@ -26,6 +26,9 @@ def extract_frames(video_path, sampling_frequency):
         if not ret:
             break  # End of video
         frames.append(frame)
+
+        output_path = os.path.join(mask_dir, "frame_" + str(count) + ".jpg")
+        cv2.imwrite(output_path, frame)
         
         # Increment frame_index
         count += 1
@@ -63,26 +66,22 @@ def bgremove1(myimage, index):
     
     # Combine the background and foreground to obtain our final image
     finalimage = background+foreground
-    # output_path = os.path.join(mask_dir, "masked_" + str(index) + ".jpg")
-    # cv2.imwrite(output_path, finalimage)
-
+    output_path = os.path.join(mask_dir, "masked_" + str(index) + ".jpg")
+    cv2.imwrite(output_path, finalimage)
     return finalimage
 
 def subtract_two_masks(curr_frame, next_frame, null_color):
-    diff_squared = np.sum((curr_frame - next_frame)**2, axis=2)  # Shape (H, W)
-
-    # Apply condition where the squared distance is less than 30^2 (900)
+    diff_squared = np.sum((curr_frame - next_frame)**2, axis=2) 
     curr_frame[diff_squared < 100] = null_color
 
-    # output_path = os.path.join(mask_dir, "subtracted_" + str(index) + ".jpg")
-    # cv2.imwrite(output_path, curr_frame)
+    output_path = os.path.join(mask_dir, "subtracted_" + str(index) + ".jpg")
+    cv2.imwrite(output_path, curr_frame)
 
 def print_time():
     return strftime("%H:%M:%S", localtime())
 
 video_path = 'data/videos/test3_cs361_2_2_2021.mp4'
-frame_dir = 'output/image/enya_test10'
-mask_dir = 'output/image/BIOE_360'
+mask_dir = 'output/image/CS_361'
 output_csv = 'output/txt/annotations.csv'
 
 sampling_frequency = 1
@@ -113,10 +112,11 @@ for index in range(len(frames_array) - 1):
         fieldnames = ['index', 'frame', 'value']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writerow({'index' : index, 
-                         'frame' : int((index * fps) / sampling_frequency),         # fps is not being read properly, not sure why
+                         'frame' : int((index * fps) / sampling_frequency),         # fps is not being calculated properly, not sure why
                          'value' : remaining_pixels[index]})       
 
 print(f"Selecting frames {print_time()}")
+# TODO: improve
 # normalize remaining pixels
 normed_rem_pixels = (remaining_pixels-np.min(remaining_pixels))/(np.max(remaining_pixels)-np.min(remaining_pixels))
 
