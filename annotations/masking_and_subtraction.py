@@ -116,19 +116,15 @@ for index in range(len(frames_array) - 1):
                          'value' : remaining_pixels[index]})       
 
 print(f"Selecting frames {print_time()}")
-# TODO: improve
-# normalize remaining pixels
-normed_rem_pixels = (remaining_pixels-np.min(remaining_pixels))/(np.max(remaining_pixels)-np.min(remaining_pixels))
-
-# store indices 
-different_image_indexes = []
+segmentation = []
 index = 0
-for percentile in normed_rem_pixels:
-    if percentile > 0.1:        # arbitary, hardcoded value
-        different_image_indexes.append(index + 1)
+threshold = frames_array.shape[0] * frames_array.shape[1] * 0.015
+for value in remaining_pixels:
+    if value > threshold:        
+        segmentation.append(index + 1)
     index = index + 1
 
-print(len(different_image_indexes), "frames selected: \n", different_image_indexes)
+print(len(segmentation), "frames selected: \n", segmentation)
 
 print(f"Finished {print_time()}")
 
