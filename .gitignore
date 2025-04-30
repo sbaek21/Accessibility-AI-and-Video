@@ -1,4 +1,4 @@
-# Ignore folders
+# Ignore folders #
 .data/
 .out_directory0/
 .out_directory1/
