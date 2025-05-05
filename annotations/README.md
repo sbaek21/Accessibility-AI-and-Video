@@ -1,7 +1,7 @@
 Given an engineering video lecture, aims to distinguish frames with annotations and redundant frames from scene changes.
 
 # Masking
-
+lorem ipsum
 
 # Subtraction
 "Subtracts" the frames across a video.  For each pair of adjacent frames, frame1 and frame2, checks every pixel at (x,y).  If frame1(x,y) and frame2(x,y) have the same pixel within a hardcoded threshold, frame1(x,y) is set to null.  Otherwise, frame1(x,y) is left unchanged.  This is repeated for every adjacent pair of frames (frame2, frame3), (frame3, frame4), and so on so forth.
@@ -15,9 +15,15 @@ Note: does not filter out mid-scroll frames, leading to some false positives.
 
 ## Example output
 Extracting frames 19:47:37
+
 Creating masks 19:47:42
+
 Starting subtraction 19:48:19
+
 Counting remaining 19:48:41
+
 Selecting frames 19:48:41
+
 [21, 25, 226, 227, 228, 282, 300, 301, 320, 321, 354, 355, 356, 369, 370, 371, 385, 386, 407, 408, 409, 410, 411, 412, 413, 547, 548, 549, 550, 551, 552]
+
 Finished 19:48:41
