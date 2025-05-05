@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import os
-import re
 from time import localtime, strftime
 import csv
 
