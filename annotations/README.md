@@ -13,16 +13,16 @@ We used Thresholding to mask our segmented frames.
 
 This works by applying a Gaussian Blur on selected frames to remove noise, then limiting the total amount of rgb values on the frame. 
 
-Then thresholding is applied where the entire image is converted into black and white based on a constant threshold $(a_{x,y} < t)$.
+Then thresholding is applied where the entire image is converted into black and white based on a constant threshold $(a_{x,y} < t)$.   
 
-Original Image:
-![original.jpg](/images/original.jpg)
+Original Image:    
+![original.jpg](/images/original.jpg)   
 
-Thresholding to extract foreground:
-![foreground.png](/images/foreground.png)
+Thresholding to extract foreground:    
+![foreground.png](/images/foreground.png)    
 
-Masked image:
-![masked.jpg](/images/masked.jpg)
+Masked image:    
+![masked.jpg](/images/masked.jpg)   
 
 
 ## Subtraction
