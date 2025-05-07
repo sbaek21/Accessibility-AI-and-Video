@@ -8,9 +8,9 @@ This project explores methods for enhancing educational accessibility by transfo
 ```plaintext
 project/
 ├── annotations/
-│   ├── masking.py                           # Foreground masking and subtraction script
-|   ├── masking_and_subtraction.py
-|   └── subtraction.py
+│   ├── masking.py                           # Applies Gaussian blur and thresholding to extract foreground
+|   ├── masking_and_subtraction.py           # Full pipeline for masking + subtraction + scene detection
+|   └── subtraction.py                       # Identifies scene changes by pixel-level subtraction
 ├── scrolling/
 │   ├── scroll_detector.ipynb                # Optical flow-based scroll detection
 │   └── webcam_OF_demo.ipynb                 # Real-time optical flow demo using webcam
