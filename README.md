@@ -143,8 +143,8 @@ Example:
 - Video file in `data/input/`
 
 **Output:**  
-- Feature distances saved in `data/output/output.txt`
-- Extracted frames are saved in `data/output/output_directory`
+- Feature distances saved in `data/output/output_cropped_video.txt`
+- Extracted frames are saved in `data/output/segmented_frames_cropped_video`
 ---
 
 ### Labeling.ipynb
