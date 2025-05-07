@@ -1,6 +1,6 @@
 # Accessibility-AI-and-Video
 
-This project explores methods for enhancing educational accessibility by transforming lecture videos into structured, book-like formats. We use techniques in Computer Vision and Machine Learning — such as optical flow, scene segmentation, and CNN-based analysis to detect visual transitions and improve readability for all users, especially those with learning differences or limited access to multimedia content.
+This project explores methods for enhancing educational accessibility by transforming lecture videos into structured, book-like formats. We use techniques in Computer Vision and Machine Learning — such as optical flow, scene segmentation, masking, and CNN-based analysis to detect visual transitions and improve readability for all users, especially those with learning differences or limited access to multimedia content.
 
 
 
