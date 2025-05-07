@@ -1,0 +1,13 @@
+# Core image processing libraries
+numpy==1.19.0
+opencv-python
+pandas
+scikit-image
+Pillow
+
+# Deep learning
+tensorflow
+keras
+
+# File handling
+pathlib

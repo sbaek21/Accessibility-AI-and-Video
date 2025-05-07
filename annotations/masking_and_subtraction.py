@@ -60,6 +60,7 @@ def bgremove1(myimage, index):
     # Perform Otsu thresholding and extract the foreground.
     # We use TOZERO_INV as we want to keep some details of the foregorund
     ret,foreground = cv2.threshold(myimage_grey,0,255,cv2.THRESH_TOZERO_INV+cv2.THRESH_OTSU)  # Currently foreground is only a mask
+    # Set original (0,0,0) pixels to (1,1,1) to avoid miscount in remaining pixels
     myimage[myimage == 0] = 1
     foreground = cv2.bitwise_and(myimage,myimage, mask=foreground)  # Update foreground with bitwise_and to extract real foreground
     
@@ -70,9 +71,12 @@ def bgremove1(myimage, index):
     return finalimage
 
 def subtract_two_masks(curr_frame, next_frame, null_color):
+    # Calculate differences between frames at each pixel
     diff_squared = np.sum((curr_frame - next_frame)**2, axis=2) 
+    # For each pair of pixels, if pixels are similar enough, set current frame pixel to null
     curr_frame[diff_squared < 100] = null_color
 
+    # Save frames
     output_path = os.path.join(mask_dir, "subtracted_" + str(index) + ".jpg")
     cv2.imwrite(output_path, curr_frame)
 
@@ -95,6 +99,7 @@ for index in range(len(frames_array)):
     frames_array[index] = bgremove1(frames_array[index], index)
 
 print(f"Starting subtraction {print_time()}")
+# Perform subtraction across all adjacent pairs of rames
 for index in range(len(frames_array) - 1): 
     null_color = [0, 0, 0]
     curr_frame = frames_array[index]
@@ -107,6 +112,7 @@ for index in range(len(frames_array) - 1):
     single_channel = cv2.cvtColor(frames_array[index], cv2.COLOR_BGR2GRAY)
     remaining_pixels.append(cv2.countNonZero(single_channel))
 
+    # Write to CSV
     with open(output_csv, 'a', newline='') as csvfile:
         fieldnames = ['index', 'frame', 'value']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -115,6 +121,7 @@ for index in range(len(frames_array) - 1):
                          'value' : remaining_pixels[index]})       
 
 print(f"Selecting frames {print_time()}")
+# Select frames that have >1.5% of frames remaining and print
 segmentation = []
 index = 0
 threshold = frames_array.shape[0] * frames_array.shape[1] * 0.015
@@ -126,5 +133,3 @@ for value in remaining_pixels:
 print(len(segmentation), "frames selected: \n", segmentation)
 
 print(f"Finished {print_time()}")
-
-
