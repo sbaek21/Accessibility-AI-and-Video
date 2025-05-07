@@ -105,27 +105,6 @@ Selecting frames 19:48:41
 
 Finished 19:48:41
 
- 
----
-### 📁 scrolling/ - Detecting Scrolling Events
-Detects scrolling within lecture videos using CNN-based visual similarity and optical flow.
-
-### scroll_detector.ipynb
-This notebook performs a three-stage pipeline:
-1. Frame Extraction: Extracts one frame per second from the lecture video.
-2. CNN-Based Grouping: Uses VGG16 features to group visually similar frames, separating slide changes from continuous scrolling.
-3. Optical Flow Analysis: Computes vertical motion between adjacent frames using Farneback dense optical flow. This identifies scrolling based on:
-    - Rewarded Vertical Motion: Weighted by coverage of motion area.
-    - Vertical Std Dev: Variability in vertical motion.
-    - Grid-Based Std Dev: Motion consistency across different regions.
-
-The output is a .csv file per scene group indicating how much scrolling occurred between each frame.
-
----
-
-### webcam_OF_demo.ipynb
-Live webcam-based demo that visualizes optical flow in real time. Helpful for testing tuning parameters.
-
 ---
 
 ### 📁 segmenting/ - Scene Segmentation and Labeling
@@ -158,6 +137,29 @@ If 'scene change' is clicked, a row with the frame number, sample number (0-inde
 
 If 'scene change' is clicked, a row with the frame number, sample number, and 'false' is written.  
 
+---
+
+### 📁 scrolling/ - Detecting Scrolling Events
+Detects scrolling within lecture videos using CNN-based visual similarity and optical flow.
+
+### scroll_detector.ipynb
+This notebook performs a three-stage pipeline:
+1. Frame Extraction: Extracts one frame per second from the lecture video.
+2. CNN-Based Grouping: Uses VGG16 features to group visually similar frames, separating slide changes from continuous scrolling.
+3. Optical Flow Analysis: Computes vertical motion between adjacent frames using Farneback dense optical flow. This identifies scrolling based on:
+    - Rewarded Vertical Motion: Weighted by coverage of motion area.
+
+**Rewarded Vertical Motion (RVM)** is calculated as:
+$$
+\text{RVM} = \left( \frac{\text{Sum of Significant Motion}}{\text{Total Pixels}} \right) \times \left( \frac{\text{Moving Pixels}}{\text{Total Pixels}} \right)^{\alpha}
+$$
+
+The output is a .csv file per scene group indicating how much scrolling occurred between each frame.
+
+---
+
+### webcam_OF_demo.ipynb
+Live webcam-based demo that visualizes optical flow in real time. Helpful for testing tuning parameters.
 
 
 ---
