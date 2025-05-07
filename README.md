@@ -140,7 +140,7 @@ It performs the following steps:
 Example:
 
 **Input:**  
-- Video files in `data/input/`
+- Video file in `data/input/`
 
 **Output:**  
 - Feature distances saved in `data/output/output.txt`
