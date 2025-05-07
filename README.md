@@ -124,7 +124,7 @@ Live webcam-based demo that visualizes optical flow in real time. Helpful for te
 
 ---
 
-### 📁 segmenting/
+### 📁 segmenting/ - Scene Segmentation and Labeling
 
 ### CNN.ipynb
 This notebook extracts frames from a video and compares them using a pre-trained Convolutional Neural Network (CNN), specifically VGG16 from Keras. It uses CNN feature vectors to compute visual similarity between scenes and saves the computed distances to a text file.
