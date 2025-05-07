@@ -11,7 +11,7 @@
 .out_directory_crop_comb/
 .segmented_frames/
 .subdirs_with_absdiff/
-.subdirs_with_cnn/
+
 
 # Ignore specific file types
 *.log
@@ -29,4 +29,3 @@ out_directory_no_face
 out_directory_no_face2
 segmented_frames
 subdirs_with_absdiff
-subdirs_with_cnn

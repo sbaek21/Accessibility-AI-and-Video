@@ -1,0 +1,4 @@
+Frame Index,Rewarded Vertical Motion,Mean Vertical Motion,Overall Std Dev,Region-wise Std Dev
+0 to 1,0.0005,0.0163,0.2191,0.0093
+1 to 2,0.0,0.0004,0.0778,0.0009
+2 to 3,0.0003,0.2608,10.54,0.6406
