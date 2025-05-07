@@ -18,7 +18,7 @@ project/
 │   ├── CNN.ipynb                            # Convolutional Neural Network for scene segmentation
 │   └── Labeling.ipynb                       # Manual labeling tool for training data
 ├── archived
-├── data
+├── data                                     # Includes example data used
 ├── presentations                            # Includes posters and presentations
 ```
 
