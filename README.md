@@ -22,6 +22,10 @@ project/
 ├── presentations                            # Includes posters and presentations
 ```
 
+## Pipeline of the project
+
+![pipeline.png](archived/pipeline.png)
+
 ## Requirements
 This project uses the following libraries and tools:
 - Python 3.8+
