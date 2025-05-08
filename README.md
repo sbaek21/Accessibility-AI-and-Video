@@ -150,9 +150,8 @@ This notebook performs a three-stage pipeline:
     - Rewarded Vertical Motion: Weighted by coverage of motion area.
 
 **Rewarded Vertical Motion (RVM)** is calculated as:
-$$
-\text{RVM} = \left( \frac{\text{Sum of Significant Motion}}{\text{Total Pixels}} \right) \times \left( \frac{\text{Moving Pixels}}{\text{Total Pixels}} \right)^{\alpha}
-$$
+
+$$\text{RVM} = \left( \frac{\text{Sum of Significant Motion}}{\text{Total Pixels}} \right) \times \left( \frac{\text{Moving Pixels}}{\text{Total Pixels}} \right)^{\alpha}$$
 
 The output is a .csv file per scene group indicating how much scrolling occurred between each frame.
 
