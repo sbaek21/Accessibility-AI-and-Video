@@ -19,8 +19,8 @@ def extract_frames(video_path, sampling_frequency):
     # Extracting frames, chronologically forwards
     frames = []
     count = 0
-    frame_index = 0
-    while frame_index <= cap.get(cv2.CAP_PROP_FRAME_COUNT):
+    # frame_index = 0
+    while int((count * fps) / sampling_frequency) <= cap.get(cv2.CAP_PROP_FRAME_COUNT):
         ret, frame = cap.read()
         if not ret:
             break  # End of video
@@ -119,17 +119,19 @@ for index in range(len(frames_array) - 1):
         writer.writerow({'index' : index, 
                          'frame' : int((index * fps) / sampling_frequency),         # fps is not being calculated properly, not sure why
                          'value' : remaining_pixels[index]})       
+print(len(remaining_pixels), "remaining pixels by frame: \n", remaining_pixels)
 
 print(f"Selecting frames {print_time()}")
-# Select frames that have >1.5% of frames remaining and print
+# Select frames that have >2 std. dev. of pixels remaining and print
 segmentation = []
-index = 0
-threshold = frames_array.shape[0] * frames_array.shape[1] * 0.015
-for value in remaining_pixels:
-    if value > threshold:        
-        segmentation.append(index + 1)
-    index = index + 1
+z_scores = (remaining_pixels - np.mean(remaining_pixels)) / np.std(remaining_pixels)
+threshold = 2               # 2 std dev?
 
+for index, value in enumerate(z_scores):
+    if value > threshold:        
+        segmentation.append(index)          # marking if preceeds a scene change...
+
+print("z-scores: \n", z_scores)
 print(len(segmentation), "frames selected: \n", segmentation)
 
 print(f"Finished {print_time()}")
